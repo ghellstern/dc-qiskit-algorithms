@@ -39,10 +39,10 @@ from qiskit import QuantumCircuit
 from qiskit.circuit.measure import measure
 from qiskit.extensions import standard
 
-from . import Qft as qft
+from . import Qft
 
 
-def draper_adder(input_a, input_b, length = None):
+def draper_adder(input_a, input_b, length=None):
     # type: (int, int, Optional[int]) -> Tuple[QuantumCircuit, float]
     """
     The Draper adder (arXiv:quant-ph/0008033), provide a and b and make sure to define a size of
@@ -74,15 +74,15 @@ def draper_adder(input_a, input_b, length = None):
         if c == '1':
             standard.x(qc, b[i])
 
-    qft.qft(qc, a)
+    Qft.qft(qc, a)
 
     for b_index in reversed(range(b.size)):
         theta_index = 1
         for a_index in reversed(range(b_index + 1)):
-            standard.cu1(qc, qft.get_theta(theta_index), b[b_index], a[a_index])
+            standard.cu1.cu1(qc, Qft.get_theta(theta_index), b[b_index], a[a_index])
             theta_index += 1
 
-    qft.qft_dg(qc, a)
+    Qft.qft_dg(qc, a)
 
     standard.barrier(qc, a, b)
 
