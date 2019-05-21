@@ -64,15 +64,15 @@ def draper_adder(input_a, input_b, length=None):
     c_b = qiskit.ClassicalRegister(len(b_01s), "c_b")
     qc = qiskit.QuantumCircuit(a, b, c_a, c_b, name='draper adder')
 
-    standard.barrier(qc, a, b)
+    standard.barrier.barrier(qc, a, b)
 
     for i, c in enumerate(a_01s):
         if c == '1':
-            standard.x(qc, a[i])
+            standard.x.x(qc, a[i])
 
     for i, c in enumerate(b_01s):
         if c == '1':
-            standard.x(qc, b[i])
+            standard.x.x(qc, b[i])
 
     Qft.qft(qc, a)
 
@@ -84,7 +84,7 @@ def draper_adder(input_a, input_b, length=None):
 
     Qft.qft_dg(qc, a)
 
-    standard.barrier(qc, a, b)
+    standard.barrier.barrier(qc, a, b)
 
     measure(qc, a, c_a)
     measure(qc, b, c_b)

@@ -37,9 +37,9 @@ class MultipleControlledNotGateTest(unittest.TestCase):
         c = ClassicalRegister(4)
         qc = QuantumCircuit(q, c)
 
-        x(qc, q[1])
-        x(qc, q[2])
-        x(qc, q[3])
+        x.x(qc, q[1])
+        x.x(qc, q[2])
+        x.x(qc, q[3])
         ccx(qc, 7, [q[1], q[2], q[3]], q[0])
         measure(qc, q, c)
 
@@ -56,8 +56,8 @@ class MultipleControlledNotGateTest(unittest.TestCase):
         c = ClassicalRegister(4)
         qc = QuantumCircuit(q, c)
 
-        h(qc, q[0])
-        h(qc, q[2])
+        h.h(qc, q[0])
+        h.h(qc, q[2])
         # State now ['0000', '0001', '0100', '0101']
         ccx(qc, 5, [q[0], q[1], q[2]], q[3])
         # State now ['0000', '0001', '0100', '1101']

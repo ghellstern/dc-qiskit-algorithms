@@ -118,12 +118,14 @@ class FFQramEntry(object):
             ba.append(False)
 
         for i, b in enumerate(ba):
-            if not b: x(qc, bus_register[i])
+            if not b:
+                x.x(qc, bus_register[i])
 
         cnry(qc, theta, bus_register, register)
 
         for i, b in enumerate(ba):
-            if not b: x(qc, bus_register[i])
+            if not b:
+                x.x(qc, bus_register[i])
 
         return qc
 

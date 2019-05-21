@@ -81,11 +81,11 @@ def qft(qc, q):
 
     unused = q_list.copy()
     for qr in q_list:
-        standard.h(qc, qr)
+        standard.h.h(qc, qr)
         k = 2
         unused.remove(qr)
         for qj in reversed(unused):
-            standard.cu1(qc, get_theta(k), qj, qr)
+            standard.cu1.cu1(qc, get_theta(k), qj, qr)
             k = k + 1
     return qc
 

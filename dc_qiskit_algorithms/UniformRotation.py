@@ -236,7 +236,7 @@ class UniformRotationGate(CompositeGate):
             next_gray = gc.next(i + 1).current
 
             control_index = int(np.log2(int(current_gray, 2) ^ int(next_gray, 2)))
-            cx(self, control_qubits[control_index], tgt)
+            cx.cx(self, control_qubits[control_index], tgt)
 
             current_gray = next_gray
 
@@ -296,7 +296,7 @@ def unirz(self, alpha, control_qubits, tgt):
     :return: applied composite gate or circuit
     """
     def rz_möttönen2ibm(cg: CompositeGate, theta: float, qreg: Tuple[QuantumRegister, int]) -> InstructionSet:
-        return rz(cg, -theta, qreg)
+        return rz.rz(cg, -theta, qreg)
 
     return uni_rot(self, rz_möttönen2ibm, alpha, control_qubits, tgt)
 
@@ -390,9 +390,9 @@ class MultiControlledXGate(CompositeGate):
         alpha = sparse.dok_matrix((length, 1), dtype=np.float64)
         alpha[conditional_case] = np.pi
         from qiskit.extensions.standard import h
-        h(self, tgt)
+        h.h(self, tgt)
         uniry(self, alpha, control_qubits, tgt)
-        h(self, tgt)
+        h.h(self, tgt)
 
     def __repr__(self):
         """
