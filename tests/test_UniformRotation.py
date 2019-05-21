@@ -22,7 +22,6 @@ from qiskit.circuit.measure import measure
 from qiskit.extensions.standard import x, h
 from qiskit.result import Result
 
-import defaults
 from dc_qiskit_algorithms.UniformRotation import ccx
 
 
